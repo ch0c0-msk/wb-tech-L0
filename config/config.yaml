@@ -1,0 +1,14 @@
+web:
+  port: "8080"
+db:
+  username: "wbtechuser"
+  host: "localhost"
+  port: "5436"
+  dbname: "wbtechdb"
+  sslmode: "disable"
+nats:
+  port: "4223"
+  host: "localhost"
+  clusterId: "test-cluster"
+  clientId: "sub"
+  subject: "orderInfo"
