@@ -13,6 +13,7 @@ const (
 	deliveryTable   = "DELIVERY"
 	itemTable       = "ITEM"
 	orderItemsTable = "SALE_ITEMS"
+	orderErrorTable = "SALE_ERROR"
 )
 
 type Config struct {

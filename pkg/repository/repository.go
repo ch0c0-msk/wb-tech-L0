@@ -13,6 +13,7 @@ type CacheStore interface {
 
 type DbStore interface {
 	AddOrder(order model.Order) error
+	AddErrorOrder(order model.Order) error
 	RestoreCache() (map[string]model.Order, error)
 }
 

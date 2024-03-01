@@ -13,6 +13,7 @@ import (
 type Order interface {
 	GetOrder(id string) (model.Order, error)
 	AddOrder(order model.Order) error
+	AddErrorOrder(order model.Order) error
 }
 
 type Service struct {

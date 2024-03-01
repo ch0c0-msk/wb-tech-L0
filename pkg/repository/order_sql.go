@@ -2,7 +2,9 @@ package repository
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/ch0c0-msk/wb-tech-L0/pkg/model"
 )
@@ -137,4 +139,14 @@ func (o *OrderSql) AddOrder(order model.Order) error {
 		return err
 	}
 	return nil
+}
+
+func (o *OrderSql) AddErrorOrder(order model.Order) error {
+	jsonOrderData, err := json.Marshal(order)
+	if err != nil {
+		return err
+	}
+	query := fmt.Sprintf("INSERT INTO %s (sale_uid, sale_data, created_dt) VALUES ($1, $2, $3);", orderErrorTable)
+	_, err = o.db.Exec(query, order.Id, string(jsonOrderData), time.Now())
+	return err
 }

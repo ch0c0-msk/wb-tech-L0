@@ -27,3 +27,7 @@ func (o *OrderService) AddOrder(order model.Order) error {
 	}
 	return o.cacheRepo.AddOrder(order)
 }
+
+func (o *OrderService) AddErrorOrder(order model.Order) error {
+	return o.dbRepo.AddErrorOrder(order)
+}
