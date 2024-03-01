@@ -25,5 +25,8 @@ func (nh *NatsHandler) AddOrder(msg *stan.Msg) {
 
 	if err := nh.service.AddOrder(order); err != nil {
 		log.Printf("ERROR: failed to add order - %s", err.Error())
+		if err := nh.service.AddErrorOrder(order); err != nil {
+			log.Printf("ERROR: failed to add error order in db - %s", err.Error())
+		}
 	}
 }
